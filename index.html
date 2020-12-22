@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Apex Fun Rule Slot</title>
+  </head>
+  <body>
+    <div class="container" style="height:100%;">
+    <div style="width: 100%; background-color: rgba(0,0,0,0.5); text-align: center;">
+        <div style="margin: 50px;" class="container">
+            <div style="width:500px;">
+            <p style="margin: 0; font-size: 24px;">Apex Legends</p>
+            <h1 style="margin: 0; font-size: 50px;">Fun Rule Slot</h1>
+            <p style="margin-top: 0; font-size: 14px;">Apex をもっと楽しむためのファンルールガチャ</p>
+            <div style="height: 150px;">
+                <h1 id="rule-title" style="margin-top: 30px;"></h1>
+                <p id="rule-desc" style="width: 100%; height: 50px;"></p>
+            </div>
+            <div style="text-align: center;">
+                <div><input type="button" class="button" id="slot" value="STOP"></div>
+                <div><input type="button" class="button button-small" id="customize" value="Customize"></div>
+                <div id="custamize-area" style="display: none;">
+<textarea id="rules" style="width: 500px; height: 200px;" id="custamize" wrap="off">[
+    { "title": "擦り込みAPEX", "desc": "最初に見つけた武器を最後まで使う。弾が無くなったら格闘。"},
+    { "title": "爆弾魔APEX", "desc": "グレネードを見つけたら必ず拾い、その場で発火。デスボックスのグレも対象。"},
+    { "title": "にほんごAPEX", "desc": "外来語を使わないでボイスチャットをする。"},
+    { "title": "天邪鬼APEX", "desc": "ボイスチャットでの報連相を全て逆の意味になるように言い換える。"},
+    { "title": "バックパック禁止", "desc": "バックパックを身に付けてはいけない。"},
+    { "title": "アモ貧乏", "desc": "武器１つにつき、弾薬を１スタックまでしか持ってはいけない。"},
+    { "title": "銃声大好き", "desc": "　マッチ中、常に聞こえた一番近い銃声に100mまで寄る（戦闘は任意）。"},
+    { "title": "しりとりAPEX", "desc": "マッチ中、常にしりとりをする。10秒以上沈黙しない。"},
+    { "title": "にゃんぺっくす", "desc": "マッチ中、「にゃん」しか言えない。（別の単語に置き換え可）"},
+    { "title": "エネアモ大好き", "desc": "エネアモを見つけたら必ず拾う。持てない分はその場で撃つ。"},
+    { "title": "ヘビーアモ大好き", "desc": "ヘビーアモを見つけたら必ず拾う。持てない分はその場で撃つ。"},
+    { "title": "ライトアモ大好き", "desc": "ライトアモを見つけたら必ず拾う。持てない分はその場で撃つ。"},
+    { "title": "なりきりAPEX", "desc": "選択したレジェンドになりきってプレイ、ボイスチャットを行う。"},
+    { "title": "カタコトAPEX", "desc": "接続詞使用禁止。"},
+    { "title": "ウルトハッピー", "desc": "Ultが溜まったら強制的に使う。促進剤での調整はOK。"},
+    { "title": "スキルハッピー", "desc": "スキルが溜まったら強制的に使う。"},
+    { "title": "シグナル故障", "desc": "アイテムピン、場所ピン、敵ピンなどシグナルピン全て使用禁止。"},
+    { "title": "変語尾APEX", "desc": "好きな語尾を決め、マッチ中その語尾を使う。"},
+    { "title": "ピストル縛り", "desc": "ピストル系武器（ウィングマン、P2020、RE-45）のみ使用可能。"},
+    { "title": "シールドセル大好き", "desc": "シールドセルを見つけたら必ず回収する。"},
+    { "title": "リング端大好き", "desc": "常にリングの端にポジショニングし、リング収縮と同時に移動。"},
+    { "title": "高所恐怖症", "desc": "高所でキャンプしてはいけない。通り過ぎるのはOK。"},
+    { "title": "回復貧乏", "desc": "バッテリー、応急キット使用禁止（セル、注射器のみ）。"},
+    { "title": "北国育ち", "desc": "エリアの（リング中央より）南側侵入禁止。"},
+    { "title": "南国育ち", "desc": "エリアの（リング中央より）北側侵入禁止。"},
+    { "title": "能天気", "desc": "戦闘が始まったら世間話をする。"},
+    { "title": "どわすれAPEX", "desc": "ゲーム中の固有名詞（エリア名、アイテム名、レジェンド名）使用禁止。"},
+    { "title": "のんびりAPEX", "desc": "戦闘中以外は走ってはいけない。"},
+    { "title": "団体行動", "desc": "味方と100m以上離れてはいけない。"},
+    { "title": "私は大砲よ", "desc": "スコープ使用禁止。"},
+    { "title": "暗殺者", "desc": "1人1丁スナイパーを持つ。"},
+    { "title": "礼儀正しく", "desc": "壁を蹴ってはいけない。建物の外壁をよじ登ってはいけない。開けたら閉める。"},
+    { "title": "都会人APEX", "desc": "非戦闘時はできるだけ舗装された道路、線路を使う。"},
+    { "title": "硬派", "desc": "ケアパケ、レプリケーター、調査ビーコン、保管庫、トライデント使用禁止。"},
+    { "title": "ジップ恐怖症", "desc": "ジップライン、ジャンプタワー使用禁止（グラップルはOK）。"},
+    { "title": "世界の中心でAEPXを叫ぶ", "desc": "できるだけエリア中心にポジショニングする。"},
+    { "title": "アテレコAPEX", "desc": "レジェンドのセリフを復唱する。"},
+    { "title": "芸人APEX", "desc": "全てのリアクションを大げさにする。（こんなところにシールドセルが！！）"},
+    { "title": "お気持ちAPEX", "desc": "ボイスチャットでの報連相の後に必ず感想をいれる。（例：敵を発見！強そうだ。）"}
+]</textarea>
+                        <div><input type="button" class="button button-small" id="update" value="Update!"></div>
+                        <div id="error" style="color:red;"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div>
+                <p>Copyright © 2020 - <a href="https://twitter.com/OkuriSae" style="color: lightgreen;">@OkuriSae</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="logic.js"></script>
+  </body>
+</html>
