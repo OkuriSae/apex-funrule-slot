@@ -1,36 +1,30 @@
 'use strict';
-const title = document.getElementById('rule-title');
-const desc = document.getElementById('rule-desc');
-const slotButton = document.getElementById('slot');
-const customArea = document.getElementById('custamize-area');
-const customButton = document.getElementById('customize');
-const errorText = document.getElementById('error');
-const updateButton = document.getElementById('update');
-const rulesArea = document.getElementById('rules');
+const $ = id => { return document.getElementById(id); };
 
-customButton.onclick = () => {
+// カスタマイズON/OFF
+const customArea = $('custamize-area');
+$('customize').onclick = () => {
     customArea.style.display = customArea.style.display === "none" ? "" : "none";
 }
 
+// ルール取り込み
 let rules;
-updateButton.onclick = () => {
-    try{
-        errorText.innerText = "";
-        rules = JSON.parse(rulesArea.value);
-    } catch (e) {
-        errorText.innerText = e.message;
-    }
+const rulesArea = $('rules');
+rulesArea.onkeyup = () => {
+    rules = rulesArea.value.split('\n').filter(e => e);
 }
-updateButton.onclick();
+rulesArea.onkeyup();
 
-let slot;
-
+// ルール選定
 function setRandomRule() {
-    let rule = rules[Math.floor(Math.random()* rules.length)];
-    title.innerText = `-  ${rule.title}  -`;
-    desc.innerText = rule.desc;
+    let rule = rules[Math.floor(Math.random()* rules.length)].split(':');
+    $('rule-title').innerText = `-  ${rule[0].trim()}  -`;
+    $('rule-desc').innerText = rule[1] ? rule[1].trim() : "";
 }
 
+// スロット処理
+let slot;
+const slotButton = $('slot');
 function start () {
     slot = setInterval(setRandomRule, 50);
     slotButton.value = "STOP";
@@ -41,5 +35,4 @@ function start () {
         slotButton.onclick = start;
     }
 }
-
 start();
